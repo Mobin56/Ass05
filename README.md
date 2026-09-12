@@ -123,6 +123,7 @@ Child to Parent
 A child can communicate with its parent by receiving a callback function through props and calling that function.
 
 📁 Project Structure
+
 src/
 ├── components/
 │   ├── Navbar.jsx
@@ -146,6 +147,7 @@ Orange → Pink → Violet
 The gradient is centralized in the CSS theme so it can be easily changed later.
 
 📱 Responsive Design
+
 
 The application is responsive and optimized for:
 Desktop
