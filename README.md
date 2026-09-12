@@ -8,17 +8,9 @@ Users can find technologies from different categories like Frontend, Backend, Da
 
 Users can also make their own development stack by adding technologies they want.
 
----
 
-## 🚀 Live Project
 
-Live Demo: Add your deployed project link here
-
-GitHub Repository: Add your GitHub repository link here
-
----
-
-## 🛠️ Technologies Used
+ Technologies Used
 
 I used the following technologies to make this project:
 
@@ -30,43 +22,36 @@ I used the following technologies to make this project:
 * JSON
 * Vite
 
----
 
-## ✨ Features
 
-### 1. Explore Technologies
+Features
+
+1. Explore Technologies
 
 Users can see different technologies in the website.
-
 Each technology has some information like:
-
 * Technology name
 * Category
 * Rating
 * Difficulty level
 * Description
-
 This helps users to understand the technology before adding it to their stack.
 
-### 2. Build Your Own Stack
+2.Build Your Own Stack
 
 Users can add their favorite technologies to their own stack.
-
 They can also remove any technology from the stack if they don't need it anymore.
-
 There is also an option to clear the whole stack.
 
-### 3. Toast Notifications
+3.Toast Notifications
 
 I used React Toastify for showing messages to the users.
-
 For example, when a user adds a technology, removes a technology, adds the same technology again, or clears the stack, a toast message is shown.
-
 This makes the website easier to understand and use.
 
----
 
-# 📚 React Questions & Answers
+
+React Questions & Answers
 
 1. What is JSX and why do we use it?
 
@@ -113,18 +98,17 @@ React uses keys to understand which items have changed, been added, or been remo
 
 6. What is conditional rendering? Give an example from your project.
 
-Conditional rendering means displaying different UI based on a condition.
-
+Conditional rendering means displaying different UI based on a condition
 In this project, the loading screen is conditionally displayed while the JSON data is being loaded.
 
 7. How does data flow from Parent to Child and Child to Parent?
 Parent to Child:
 Data is passed from a parent component to a child component using props.
 Child to Parent
-
 A child can communicate with its parent by receiving a callback function through props and calling that function.
 
-📁 Project Structure
+
+Project Structure
 src/
 ├── components/
 │   ├── Navbar.jsx
@@ -141,13 +125,14 @@ src/
 public/
 └── technologies.json
 
-🎨 Design
+
+Design
 
 The project uses a consistent brand gradient:
 Orange → Pink → Violet
 The gradient is centralized in the CSS theme so it can be easily changed later.
 
-📱 Responsive Design
+Responsive Design
 
 The application is responsive and optimized for:
 Desktop
@@ -155,7 +140,7 @@ Tablet
 Mobile
 The navigation, technology grid, stack section, hero section, and footer adapt to different screen sizes.
 
-⚙️ Installation
+Installation
 
 Clone the repository:
 git clone YOUR_GITHUB_REPOSITORY_URL
