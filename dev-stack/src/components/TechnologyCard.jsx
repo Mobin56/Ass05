@@ -3,45 +3,51 @@ function TechnologyCard({ technology, addToStack, stack }) {
 
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-      <div className="mb-4 flex items-center justify-between">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-2xl">
+      <div className="flex items-start justify-between">
+        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gray-100 text-3xl">
           {technology.icon}
         </div>
 
-        <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-600">
+        <span className="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-500">
           {technology.badge}
         </span>
       </div>
 
-      <h2 className="mb-2 text-xl font-bold text-gray-900">
-        {technology.name}
-      </h2>
+      <div className="mt-5">
+        <h2 className="text-xl font-bold text-gray-900">
+          {technology.name}
+        </h2>
 
-      <p className="mb-4 min-h-12 text-sm leading-6 text-gray-500">
-        {technology.description}
-      </p>
+        <p className="mt-2 text-sm leading-6 text-gray-600">
+          {technology.description}
+        </p>
+      </div>
 
-      <div className="mb-4 flex items-center justify-between">
-        <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+      <div className="mt-5 flex items-center justify-between text-sm">
+        <span className="rounded-lg bg-gray-100 px-3 py-1 font-medium text-gray-600">
           {technology.category}
         </span>
 
-        <span className="text-sm font-medium text-gray-600">
+        <span className="font-semibold text-gray-700">
+          ⭐ {technology.rating}
+        </span>
+      </div>
+
+      <div className="mt-4 flex items-center justify-between">
+        <span className="text-sm text-gray-500">
+          Difficulty:
+        </span>
+
+        <span className="text-sm font-semibold text-gray-700">
           {technology.difficulty}
         </span>
       </div>
 
-      <div className="mb-4 flex items-center gap-1 text-sm">
-        <span>⭐</span>
-        <span className="font-semibold">{technology.rating}</span>
-      </div>
-
       <button
         onClick={() => addToStack(technology)}
-        disabled={isAdded}
-        className={`w-full rounded-xl py-3 text-sm font-semibold transition ${
+        className={`mt-5 w-full rounded-xl py-3 text-sm font-semibold transition ${
           isAdded
-            ? "cursor-not-allowed bg-green-100 text-green-600"
+            ? "bg-green-100 text-green-600 hover:bg-green-200"
             : "bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 text-white hover:opacity-90"
         }`}
       >
