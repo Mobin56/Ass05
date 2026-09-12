@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+
 import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
@@ -8,17 +9,38 @@ import TechnologyList from "./components/TechnologyList"
 import YourStack from "./components/YourStack"
 
 function App() {
+  const [technologies, setTechnologies] = useState([])
   const [stack, setStack] = useState([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
+  // Load technologies from JSON
+useEffect(() => {
+  const loadTechnologies = async () => {
+    try {
+      const response = await fetch("/technologies.json")
+
+      if (!response.ok) {
+        throw new Error("Failed to load technologies")
+      }
+
+      const data = await response.json()
+
+      // Loading state clearly visible for demo
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+
+      setTechnologies(data)
+    } catch (error) {
+      console.error("Error loading technologies:", error)
+      toast.error("Failed to load technologies.")
+    } finally {
       setLoading(false)
-    }, 700)
+    }
+  }
 
-    return () => clearTimeout(timer)
-  }, [])
+  loadTechnologies()
+}, [])
 
+  // Add technology to stack
   const addToStack = (technology) => {
     const alreadyAdded = stack.some(
       (item) => item.id === technology.id
@@ -31,16 +53,20 @@ function App() {
       return
     }
 
-    setStack([...stack, technology])
+    setStack((previousStack) => [
+      ...previousStack,
+      technology,
+    ])
 
     toast.success(
       `${technology.name} added to your stack!`
     )
   }
 
+  // Remove one technology
   const removeFromStack = (id) => {
-    setStack(
-      stack.filter(
+    setStack((previousStack) =>
+      previousStack.filter(
         (technology) => technology.id !== id
       )
     )
@@ -48,11 +74,19 @@ function App() {
     toast.info("Technology removed from your stack.")
   }
 
+  // Remove all technologies
   const removeAll = () => {
+    if (stack.length === 0) {
+      toast.warning("Your stack is already empty.")
+      return
+    }
+
     setStack([])
+
     toast.info("All technologies removed.")
   }
 
+  // Loading state
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-50">
@@ -89,13 +123,14 @@ function App() {
           </h2>
 
           <p className="mt-3 max-w-2xl text-gray-600">
-            Discover the technologies developers use to build
-            modern applications.
+            Discover the technologies developers use to
+            build modern applications.
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
           <TechnologyList
+            technologies={technologies}
             addToStack={addToStack}
             stack={stack}
           />
@@ -107,6 +142,7 @@ function App() {
           />
         </div>
       </main>
+
       <Footer />
     </div>
   )
