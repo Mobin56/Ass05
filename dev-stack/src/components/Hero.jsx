@@ -35,7 +35,7 @@ function Hero() {
 
         <div className="flex justify-center">
           <img
-            src="/banner-stack.png"
+            src={`${import.meta.env.BASE_URL}banner-stack.png`}
             alt="Development technology stack"
             className="w-full max-w-lg"
           />
